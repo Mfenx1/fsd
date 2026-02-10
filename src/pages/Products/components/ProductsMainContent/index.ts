@@ -1,0 +1,1 @@
+export { ProductsMainContent } from './ProductsMainContent';

@@ -1,0 +1,1 @@
+export { ProductsTableSkeleton } from './ProductsTableSkeleton';
