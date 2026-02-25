@@ -1,1 +1,0 @@
-export { ProductsSectionBar } from './ProductsSectionBar';

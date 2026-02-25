@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-remote
+.next
+.git
+.gitignore
+*.md
+*.log
+__tests__
+*.test.*
+*.spec.*
+coverage
+.vscode
+.idea
+Dockerfile
+docker-compose*.yml

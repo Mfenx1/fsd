@@ -4,14 +4,16 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import betterTailwindcss from 'eslint-plugin-better-tailwindcss';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import nextConfig from 'eslint-config-next';
 
 export default [
+  ...nextConfig,
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
     plugins: { 'better-tailwindcss': betterTailwindcss },
     settings: {
-      'better-tailwindcss': { entryPoint: 'src/index.css' },
+      'better-tailwindcss': { entryPoint: 'src/app/_config/globals.css' },
     },
     rules: {
       'better-tailwindcss/enforce-consistent-line-wrapping': [

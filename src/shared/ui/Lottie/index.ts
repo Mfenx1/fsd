@@ -1,0 +1,1 @@
+export { LottieView } from './Lottie';

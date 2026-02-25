@@ -1,1 +1,0 @@
-export { ColGroup } from './ColGroup';

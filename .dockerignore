@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+.next
+**/dist
+**/dist-remote
+**/.next
+
+# Git
+.git
+.gitignore
+.github
+
+# Docker (кроме one-server)
+docker
+!docker/one-server
+
+# IDE
+.vscode
+
+# Env (use build args or docker-compose)
+.env
+.env.*
+!.env.example
+
+# Tests and dev
+**/__tests__
+**/*.test.*
+**/*.spec.*
+coverage
+.nyc_output
+vitest.config.*
+jest.config.*
+
+# Misc
+*.md
+!README.md
+docs
+.DS_Store
+*.log
+npm-debug.log*
+check-host-react-exports.mjs

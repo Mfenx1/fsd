@@ -1,18 +1,26 @@
 {
   "compilerOptions": {
-    "types": ["vite/client", "vitest"],
+    "baseUrl": ".",
+    "paths": {
+      "$app": ["src/app"],
+      "$app/*": ["src/app/*"],
+      "$entities": ["src/entities"],
+      "$entities/*": ["src/entities/*"],
+      "$features": ["src/features"],
+      "$features/*": ["src/features/*"],
+      "$shared": ["src/shared"],
+      "$shared/*": ["src/shared/*"],
+      "$widgets": ["src/widgets"],
+      "$widgets/*": ["src/widgets/*"]
+    },
     "target": "ES2022",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "useDefineForClassFields": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -23,35 +31,11 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "allowJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "$components": ["src/components"],
-      "$components/*": ["src/components/*"],
-      "$pages": ["src/pages"],
-      "$pages/*": ["src/pages/*"],
-      "$api": ["src/api"],
-      "$api/*": ["src/api/*"],
-      "$constants": ["src/constants"],
-      "$constants/*": ["src/constants/*"],
-      "$hooks": ["src/hooks"],
-      "$hooks/*": ["src/hooks/*"],
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"],
-      "$schemas": ["src/schemas"],
-      "$schemas/*": ["src/schemas/*"],
-      "$services": ["src/services"],
-      "$services/*": ["src/services/*"],
-      "$store": ["src/store"],
-      "$store/*": ["src/store/*"],
-      "$types": ["src/types"],
-      "$types/*": ["src/types/*"],
-      "$utils": ["src/utils"],
-      "$utils/*": ["src/utils/*"]
-    }
+    "incremental": true,
+    "esModuleInterop": true,
+    "types": ["vite/client", "vitest"],
+    "plugins": [{ "name": "next" }]
   },
-  "include": [
-    "src",
-    "vite.config.ts",
-    "eslint.config.js"
-  ]
+  "include": ["eslint.config.js", "middleware.ts", "next.config.js", "src", "vite.config.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

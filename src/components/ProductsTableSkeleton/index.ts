@@ -1,1 +1,0 @@
-export { ProductsTableSkeleton } from './ProductsTableSkeleton';

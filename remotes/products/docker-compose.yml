@@ -1,0 +1,12 @@
+name: remote-products
+
+services:
+  app:
+    build: .
+    ports:
+      - "5173:8080"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 64M

@@ -1,0 +1,48 @@
+.container {
+  --chat-padding-x: clamp(1rem, 4vw, 1.5rem);
+  --chat-padding-y: clamp(0.75rem, 2vw, 1rem);
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  font-family: var(--font-sans);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 480px) {
+  .container {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.errorState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  margin: clamp(1rem, 4vw, 1.5rem);
+}
+
+.errorStateText {
+  margin: 0;
+  font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.errorStateHint {
+  margin: 0;
+  font-size: clamp(0.8125rem, 2vw, 0.875rem);
+  color: rgba(255, 255, 255, 0.7);
+}

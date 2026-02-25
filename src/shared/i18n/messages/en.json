@@ -1,0 +1,59 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "cookieConsent": {
+    "title": "Cookie usage",
+    "description": "We use cookies and local storage for authentication, remembering login data, language and preferences. By continuing, you agree to their use.",
+    "accept": "Accept all",
+    "reject": "Reject optional",
+    "necessary": "Necessary only",
+    "customize": "Customize",
+    "save": "Save",
+    "cancel": "Cancel",
+    "categories": {
+      "necessary": "Necessary",
+      "necessaryDesc": "Required for authentication and basic app functionality.",
+      "functional": "Functional",
+      "functionalDesc": "Remember login, language and theme preferences.",
+      "analytics": "Analytics",
+      "analyticsDesc": "Help us improve the site (e.g. visit statistics).",
+      "marketing": "Marketing",
+      "marketingDesc": "Used for personalized ads (if enabled)."
+    }
+  },
+  "shell": {
+    "nav": {
+      "products": "Products",
+      "chat": "Chat"
+    },
+    "title": "Host",
+    "logout": "Log out",
+    "about": "About",
+    "aboutModal": {
+      "title": "About",
+      "host": "Host (Next.js)",
+      "remotes": "Connected micro-frontends (remote modules):"
+    },
+    "chatModal": {
+      "title": "Chat"
+    },
+    "sidebar": {
+      "expand": "Expand menu",
+      "collapse": "Collapse menu",
+      "collapseShort": "Collapse"
+    },
+    "openChat": "Open chat",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "aria": "Select theme"
+    },
+    "locale": {
+      "ru": "Русский",
+      "en": "English",
+      "aria": "Select language"
+    }
+  }
+}

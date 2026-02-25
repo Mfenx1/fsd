@@ -1,0 +1,60 @@
+# syntax=docker/dockerfile:1
+# Host (Next.js) — независимый деплой
+# Remotes подгружаются по URL из env (NEXT_PUBLIC_*_REMOTE_URL)
+
+# Reproducibility: pinned digest (обновить при смене Node)
+FROM node:20-alpine3.20@sha256:3bc9a4c4cc25cfde1e8f946341c85f333c36517aafda829b4bb7e785e9b5995c AS builder
+
+WORKDIR /app
+
+# Remote URLs — ARG после deps для лучшего кэша слоёв
+ARG NEXT_PUBLIC_PRODUCTS_REMOTE_URL=http://localhost:5173/products.js
+ARG NEXT_PUBLIC_CHAT_REMOTE_URL=http://localhost:5174/chat.js
+ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
+ARG NEXT_PUBLIC_API_BASE=https://dummyjson.com
+
+COPY package.json package-lock.json* ./
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci --ignore-scripts 2>/dev/null || npm install --ignore-scripts
+
+COPY . .
+RUN --mount=type=cache,target=/app/.next/cache \
+  DOCKER_BUILD=1 \
+  NEXT_TELEMETRY_DISABLED=1 \
+  NEXT_PUBLIC_PRODUCTS_REMOTE_URL="$NEXT_PUBLIC_PRODUCTS_REMOTE_URL" \
+  NEXT_PUBLIC_CHAT_REMOTE_URL="$NEXT_PUBLIC_CHAT_REMOTE_URL" \
+  NEXT_PUBLIC_APP_URL="$NEXT_PUBLIC_APP_URL" \
+  NEXT_PUBLIC_API_BASE="$NEXT_PUBLIC_API_BASE" \
+  npm run build:docker
+
+# =============================================================================
+# Runner — минимальный образ, non-root
+# =============================================================================
+FROM node:20-alpine3.20@sha256:3bc9a4c4cc25cfde1e8f946341c85f333c36517aafda829b4bb7e785e9b5995c AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN addgroup --system --gid 1001 nodejs && \
+  adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+USER nextjs
+
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget -q --spider http://localhost:3000/api/health || exit 1
+
+LABEL org.opencontainers.image.title="Next.js Host"
+LABEL org.opencontainers.image.description="Host app, remotes loaded from env URLs"
+LABEL org.opencontainers.image.source=""
+
+CMD ["node", "server.js"]

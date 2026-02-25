@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: docker/one-server/Dockerfile
+    ports: ["80:80"]
+    volumes:
+      - ../../remotes/products/dist-remote:/var/www/products
+      - ../../remotes/chat/dist-remote:/var/www/chat
