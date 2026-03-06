@@ -1,0 +1,74 @@
+.actionsArea {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  width: auto;
+  padding: 0.5rem 0.75rem;
+  min-width: 2.25rem;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: clamp(0.75rem, 2.5vw, 0.8125rem);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionText {
+  display: none;
+}
+
+@container chat (min-width: 520px) {
+  .actionButton {
+    min-width: auto;
+  }
+
+  .actionIcon {
+    display: none;
+  }
+
+  .actionText {
+    display: inline;
+  }
+}
+
+.reconnectButton {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.disconnectButton {
+  background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
+}
+
+.reconnectButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.disconnectButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.4);
+}
+
+.reconnectButton:active,
+.disconnectButton:active {
+  transform: translateY(0);
+}

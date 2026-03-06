@@ -1,0 +1,159 @@
+.emptyState {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  font-weight: 500;
+}
+
+.messagesContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.375rem, 1.5vw, 0.5rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+  background: transparent;
+  scroll-behavior: smooth;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+}
+
+.messagesContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+@media (min-width: 480px) {
+  .messagesContainer::-webkit-scrollbar {
+    width: 10px;
+  }
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.6) 0%, rgba(99, 102, 241, 0.6) 100%);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.9) 0%, rgba(99, 102, 241, 0.9) 100%);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, rgba(139, 92, 246, 1) 0%, rgba(99, 102, 241, 1) 100%);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.7);
+}
+
+.messageItem {
+  display: flex;
+  flex-direction: column;
+  max-width: min(85%, 20rem);
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
+  background: rgba(51, 65, 85, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  align-self: flex-start;
+  animation: slideInLeft 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 480px) {
+  .messageItem {
+    max-width: min(70%, 22rem);
+  }
+}
+
+.messageItemOwn {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px) scale(0.95);
+  }
+  60% {
+    transform: translateX(2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(16px) scale(0.95);
+  }
+  60% {
+    transform: translateX(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.messageAuthor {
+  font-size: clamp(0.625rem, 2vw, 0.6875rem);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.messageItemOwn .messageAuthor {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.messageText {
+  font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
+  line-height: 1.5;
+  word-wrap: break-word;
+  margin-bottom: 0.25rem;
+  color: #e2e8f0;
+}
+
+.messageItemOwn .messageText {
+  color: #fff;
+}
+
+.messageTimestamp {
+  font-size: clamp(0.625rem, 2vw, 0.6875rem);
+  opacity: 0.6;
+  align-self: flex-end;
+  margin-top: 0.125rem;
+  color: #94a3b8;
+}
+
+.messageItemOwn .messageTimestamp {
+  color: rgba(255, 255, 255, 0.75);
+}

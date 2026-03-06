@@ -1,0 +1,1 @@
+export { PageSuspense } from './PageSuspense';

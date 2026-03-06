@@ -1,0 +1,12 @@
+name: remote-chat
+
+services:
+  app:
+    build: .
+    ports:
+      - "5174:8080"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 64M

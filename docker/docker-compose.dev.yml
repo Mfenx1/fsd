@@ -1,0 +1,26 @@
+name: next-dev
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.dev
+    working_dir: /app
+    volumes:
+      - ..:/app
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+      - "5174:5174"
+    environment:
+      NODE_ENV: development
+      DOCKER_DEV: "1"
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXT_PUBLIC_API_BASE: https://dummyjson.com
+      NEXT_PUBLIC_PRODUCTS_REMOTE_URL: http://localhost:5173/src/remote-dev.tsx
+      NEXT_PUBLIC_CHAT_REMOTE_URL: http://localhost:5174/src/remote-dev.tsx
+      VITE_DEV_FOR_HOST: "1"
+      VITE_HOST_ORIGIN: http://localhost:3000
+    command: sh -c "npm install && (cd remotes/products && npm install) && (cd remotes/chat && npm install) && npm run dev:all"
+    stdin_open: true
+    tty: true

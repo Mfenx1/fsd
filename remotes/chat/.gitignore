@@ -1,0 +1,7 @@
+node_modules/
+dist/
+dist-remote/
+*.timestamp*.mjs
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,47 @@
+{
+  "name": "remote-products",
+  "version": "1.0.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:host": "cross-env VITE_DEV_FOR_HOST=1 vite",
+    "dev:standalone": "vite",
+    "build": "vite build",
+    "build:remote": "vite build --config vite.remote.js",
+    "build:remote:watch": "vite build --watch --config vite.remote.js",
+    "deploy": "npm version patch --no-git-tag-version && npm run build:remote",
+    "preview": "vite preview",
+    "preview:remote": "vite preview --config vite.remote.js",
+    "preview:remote:full": "npm run build:remote && npm run preview:remote",
+    "lint": "eslint src --max-warnings 0",
+    "lint:fix": "eslint src --max-warnings 0 --fix"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.90.20",
+    "@tanstack/react-virtual": "3.13.18",
+    "clsx": "2.1.1",
+    "immer": "11.1.3",
+    "lucide-react": "0.563.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zod": "4.3.6",
+    "zustand": "5.0.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@tailwindcss/vite": "4.1.18",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "4.2.1",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.7.2",
+    "typescript-eslint": "^8.54.0",
+    "vite": "5.4.21",
+    "cross-env": "^7.0.3"
+  }
+}

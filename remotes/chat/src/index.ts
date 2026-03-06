@@ -1,0 +1,1 @@
+export { Chat, Chat as default } from './App';

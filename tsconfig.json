@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$app": ["src/app"],
+      "$app/*": ["src/app/*"],
+      "$entities": ["src/entities"],
+      "$entities/*": ["src/entities/*"],
+      "$features": ["src/features"],
+      "$features/*": ["src/features/*"],
+      "$shared": ["src/shared"],
+      "$shared/*": ["src/shared/*"],
+      "$widgets": ["src/widgets"],
+      "$widgets/*": ["src/widgets/*"]
+    },
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "useDefineForClassFields": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "types": ["vite/client", "vitest"],
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["eslint.config.js", "middleware.ts", "next.config.js", "src", "vite.config.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
